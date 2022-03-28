@@ -4,13 +4,14 @@ package common
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"path/filepath"
 	"strings"
 	"syscall"
 	"unsafe"
 
-	"github.com/StackExchange/wmi"
+	//"github.com/StackExchange/wmi"
 	"golang.org/x/sys/windows"
 )
 
@@ -197,7 +198,8 @@ func WMIQueryWithContext(ctx context.Context, query string, dst interface{}, con
 
 	errChan := make(chan error, 1)
 	go func() {
-		errChan <- wmi.Query(query, dst, connectServerArgs...)
+		//errChan <- wmi.Query(query, dst, connectServerArgs...)
+		errChan <- errors.New("not supported")
 	}()
 
 	select {
